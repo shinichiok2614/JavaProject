@@ -5,20 +5,17 @@
 package javaapplication1;
 
 
-interface GiaoDienCha1{
-    default public void phuongThuc1(int key){
-        System.out.println("p1 g1");
+class Base {
+    int i;
+    void nhap(int i){
+        this.i=i;
     }
 }
-interface GiaoDienCha2{
-    default public void phuongThuc1(int key){
-        System.out.println("p1 g2");
-    }
-}
-class Lop implements GiaoDienCha1, GiaoDienCha2{
-    public void phuongthuc1(int key){
-        GiaoDienCha1.super.phuongThuc1(key);
-        System.out.println("phuong thuc 1 trong class Lop");
+class Derived extends Base{
+    int i;
+    void inThongTin(){
+        System.out.println("i cua Base: "+super.i);
+        System.out.println("i cua Derived: "+this.i);
     }
 }
 /**
@@ -31,8 +28,9 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Lop lop=new Lop();
-        
+        Derived d=new Derived();
+        d.i=10;d.nhap(20);
+        d.inThongTin();
     }
     
 }
